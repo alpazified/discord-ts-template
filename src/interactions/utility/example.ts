@@ -13,14 +13,11 @@ export const exampleCommand = {
 		{
 			name: 'exampled',
 			description: 'exampled',
-			// @ts-expect-error
-			cooldown: 4000,
 			type: ApplicationCommandOptionType.Subcommand,
 		},
 		{
 			name: 'examplified',
 			description: 'exmaf',
-			cooldown: 12010,
 			type: ApplicationCommandOptionType.Subcommand
 		}
 	]
