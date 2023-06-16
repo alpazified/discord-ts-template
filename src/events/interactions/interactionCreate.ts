@@ -86,11 +86,10 @@ export default new Event('interactionCreate', async (interaction) => {
 	};
 	if (interaction.isAnySelectMenu()) {
 		const menuName = interaction.customId.split('-')[0];
-		const selectMenu = client.menus.get(menuName);
-		if (!selectMenu) return;
-
 		const values = interaction.values;
+		const selectMenu = client.menus.get(menuName);
 
+		if (!selectMenu) return;
 		if (!member.permissions.has(selectMenu.permission)) {
 			return await interaction.reply({ embeds: [client.embeds.attention(`This menu requires the **${selectMenu.permission}** permission.`)], ephemeral: true });
 		};
@@ -105,11 +104,9 @@ export default new Event('interactionCreate', async (interaction) => {
 	if (interaction.isModalSubmit()) {
 		const modalName = interaction.customId.split('-')[0];
 		const fields = interaction.fields;
-		
 		const modal = client.modals.get(modalName);
 
 		if (!modal) return;
-
 		if (!member.permissions.has(modal.permission)) {
 			return interaction.reply({ embeds: [client.embeds.attention(`This modal requires the **${modal.permission}** permission.`)]})
 		};
@@ -119,6 +116,6 @@ export default new Event('interactionCreate', async (interaction) => {
 			interaction: interaction,
 			fields: fields,
 			options: interaction.customId.split('-')
-		})
-	}
+		});
+	};
 });
