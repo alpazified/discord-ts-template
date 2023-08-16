@@ -145,14 +145,11 @@ export interface paginatorStatusOptions {
 }
 
 // Emojis
-// Emojis Config
 
 export type EmojisConfigTypes =
 	| 'success'
 	| 'error'
 	| 'attention'
-	| 'ping'
-
 
 export interface emojisConfigTypes {
 	success: string;
