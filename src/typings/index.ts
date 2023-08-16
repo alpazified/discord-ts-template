@@ -73,6 +73,7 @@ export type interactionOptions = {
 	description?: string;
 	directory: commandDirectories;
 	cooldown?: number;
+	botPermission: PermissionResolvable[];
 	permission?: PermissionResolvable;
 } & ChatInputApplicationCommandData;
 
