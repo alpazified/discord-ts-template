@@ -22,7 +22,9 @@ export default new Event('interactionCreate', async (interaction) => {
 			return await interaction.reply({ embeds: [client.embeds.attention(`This command requires the **${command.interaction.permission}** permission.`)], ephemeral: true })
 		};
 		
-		if (!interaction.appPermissions.has(command.interaction.botPermission))
+		if (!interaction.appPermissions.has(command.interaction.permission || ['SendMessages'])) {
+			return await interaction.reply({ embeds: [client.embeds.attention(`I require the **${command.interaction.botPermission.join(', ')}** permission(s) for this command to run.`)], ephemeral: true });
+		}
 
 		if (cooldown.has(`${commandName}${interaction.user.id}`)) {
 			const remaining = cooldown.get(`${commandName}${interaction.user.id}`)
