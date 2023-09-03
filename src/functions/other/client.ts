@@ -4,29 +4,36 @@ import { type emojisConfigTypes, type EmojisConfigTypes, emojisConfigDefaults } 
 import { load } from 'js-yaml';
 import { existsSync, readFileSync } from 'node:fs';
 
-export const cc = {
+export const colors = {
 	invisible: resolveColor('#2F3136'),
 	moderation: resolveColor('#dbca95'),
+};
+
+export const cemojis = {
 	success: checkEmojis('success'),
 	error: checkEmojis('error'),
 	attention: checkEmojis('attention'),
-};
+	rod: checkEmojis('rod'),
+	nibs: checkEmojis('nibs')
+}
 
 export const clientEmbeds = {
 	success: function (message: string) {
 		const embed = new EmbedBuilder()
-			.setDescription(client.cc.success + ' ' + message)
-			.setColor(resolveColor('#9eea9a'));
+			.setDescription(client.emoji.success + ' ' + message)
+			.setColor('#9eea9a');
 		return embed;
 	},
 	attention: function (message: string) {
 		const embed = new EmbedBuilder()
-			.setDescription(client.cc.attention + ' ' + message)
-			.setColor(resolveColor('#f0e17c'));
+			.setDescription(client.emoji.attention + ' ' + message)
+			.setColor('#f0e17c');
 		return embed;
 	},
 	error: function name(error: string) {
-		const embed = new EmbedBuilder().setDescription(client.cc.error + ' ' + error).setColor(0xCC0000);
+		const embed = new EmbedBuilder()
+			.setDescription(client.emoji.error + ' ' + error)
+			.setColor(0xCC0000);
 		return embed;
 	},
 };
