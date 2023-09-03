@@ -18,11 +18,11 @@ export default new Event('interactionCreate', async (interaction) => {
 			return await interaction.reply({ embeds: [client.embeds.error(`This command is non-existent.`)], ephemeral: true })
 		};
 		
-		if (!member.permissions.has(command.interaction.permission)) {
+		if (!member.permissions.has(command.interaction.permission || 'SendMessages')) {
 			return await interaction.reply({ embeds: [client.embeds.attention(`This command requires the **${command.interaction.permission}** permission.`)], ephemeral: true })
 		};
 		
-		if (!interaction.appPermissions.has(command.interaction.permission || ['SendMessages'])) {
+		if (!interaction.appPermissions.has(command.interaction.botPermission || ['SendMessages'])) {
 			return await interaction.reply({ embeds: [client.embeds.attention(`I require the **${command.interaction.botPermission.join(', ')}** permission(s) for this command to run.`)], ephemeral: true });
 		}
 
