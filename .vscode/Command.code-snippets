@@ -7,7 +7,7 @@
 			"",
 			"export default new Command({",
 			"    interaction: interactions.COMMANDNAME,",
-			"    excute: async ({ client, interaction, options }) => {",
+			"    execute: async ({ client, interaction, options }) => {",
 			"",
 			"    }",
 			"})"
