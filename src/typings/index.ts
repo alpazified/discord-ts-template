@@ -66,7 +66,7 @@ type modalExecuteFunction = (options: modalExecuteOptions) => any;
 type selectMenuExecuteFunction = (options: selectMenuExecuteOptions) => any;
 type autocompleteFunction = (options: autocompleteOptions) => any;
 
-type commandDirectories = 'utility';
+type commandDirectories = 'utility' | 'fun';
 
 export type interactionOptions = {
 	name: string;
@@ -150,16 +150,20 @@ export type EmojisConfigTypes =
 	| 'success'
 	| 'error'
 	| 'attention'
+	| 'rod'
+	| 'nibs'
 
 export interface emojisConfigTypes {
 	success: string;
 	error: string;
 	attention: string;
-
+	nibs: string;
 }
 
 export enum emojisConfigDefaults {
 	success = '✅',
 	error = '❌',
-	attention = '❗️',
+	attention = '⚠️',
+	rod = '🎣',
+	nibs = '🪶'
 }

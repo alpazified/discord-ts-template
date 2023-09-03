@@ -12,7 +12,7 @@ export default new Event('interactionCreate', async (interaction) => {
 
 	if (interaction.isChatInputCommand()) {
 		const command = client.commands.get(interaction.commandName);
-		const commandName = interaction.options.getSubcommandGroup() ? `${interaction.commandName}${interaction.options.getSubcommandGroup()}${interaction.options.getSubcommand()}` : interaction.options.data[0]?.name ? `${interaction.commandName}${interaction.options.getSubcommand()}` : interaction.commandName;
+		const commandName = interaction.options.getSubcommandGroup() ? `${interaction.commandName}${interaction.options.getSubcommandGroup()}${interaction.options.getSubcommand()}` : interaction.options.data[0]?.type == 1 ? `${interaction.commandName}${interaction.options.getSubcommand()}` : interaction.commandName;
 		 
 		if (!command) {
 			return await interaction.reply({ embeds: [client.embeds.error(`This command is non-existent.`)], ephemeral: true })
@@ -21,7 +21,9 @@ export default new Event('interactionCreate', async (interaction) => {
 		if (!member.permissions.has(command.interaction.permission)) {
 			return await interaction.reply({ embeds: [client.embeds.attention(`This command requires the **${command.interaction.permission}** permission.`)], ephemeral: true })
 		};
-	
+		
+		if (!interaction.appPermissions.has(command.interaction.botPermission))
+
 		if (cooldown.has(`${commandName}${interaction.user.id}`)) {
 			const remaining = cooldown.get(`${commandName}${interaction.user.id}`)
 			const cooldownEmbed = new EmbedBuilder()

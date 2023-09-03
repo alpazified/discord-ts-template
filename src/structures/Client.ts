@@ -1,8 +1,8 @@
-import { Client, Collection, ClientEvents, GatewayIntentBits, Partials } from 'discord.js';
+import { Client, Collection, ClientEvents, GatewayIntentBits } from 'discord.js';
 import { buttonType, commandType, modalType, selectMenuType } from '../typings';
 import { Event } from './Event';
 import { readdirSync } from 'fs';
-import { cc, clientEmbeds,  } from '../functions/other/client';
+import { cemojis, colors, clientEmbeds } from '../functions/other/client';
 import { Config } from './Config';
 import { connect } from 'mongoose';
 import { logger } from '../logger';
@@ -13,7 +13,8 @@ export class ExtendedClient extends Client {
 	public modals: Collection<string, modalType> = new Collection();
 	public menus: Collection<string, selectMenuType> = new Collection();
 	public embeds = clientEmbeds;
-	public cc = cc;
+	public emoji = cemojis;
+	public colors = colors;
 	public config = new Config();
 	
 	constructor() {
@@ -24,12 +25,7 @@ export class ExtendedClient extends Client {
 				GatewayIntentBits.Guilds,
 				GatewayIntentBits.GuildMembers,
 				GatewayIntentBits.GuildMessages,
-			],
-			partials: [
-				Partials.Channel,
-				Partials.Reaction,
-				Partials.Message
-			],
+			]
 		});
 		this.born();
 	}
@@ -37,7 +33,7 @@ export class ExtendedClient extends Client {
 	private async born() {
 		// Connecting to MongoDB
 		if (process.env.MONGO_URL) {
-			await connect(process.env.MONGO_URL).then(() => {
+			await connect(process.env.MONGO_URL, { dbName: 'taro' }).then(() => {
 				logger.info('Connected to MongoDB', { showDate: false })
 			})
 		}

@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Fishing Rod",
+    "description": "Cast your rod into the sea for a chance to get some rewards!",
+    "sellable": true,
+    "buyable": true,
+    "price": 150,
+    "emoji": "🎣",
+    "id": "fishingrod"
+  },
+  {
+    "name": "Jay's Golden Coin",
+    "description": "It's a golden coin! At one point this used to be called a Dollarydoo. It radiates a warmth that invigorates you.",
+    "sellable": false,
+    "buyable": true,
+    "usable": false,
+    "price": 150000,
+    "emoji": "🪙",
+    "id": "jaycoin"
+  },
+  {
+    "name": "Gates Puzzle Piece",
+    "description": "In another universe this item went by another name and held a great magical power. It quietly vibrates at times.",
+    "sellable": true,
+    "buyable": true,
+    "usable": false,
+    "price": 150,
+    "emoji": "🧩",
+    "id": "gatespuzzle"
+  },
+  {
+    "name": "Mysterious Wand",
+    "description": "The wood of the wand is oak and smells of lavender and burnt linens. You feel a great power inside.",
+    "sellable": ""
+  }
+]
